@@ -9,3 +9,15 @@
 この時、あなたが得られる美味しさの最大の合計値を求めてください。
 お寿司は一周回ってくることはないとする。
 '''
+A = int(input())
+S = list(map(int, input().split()))
+
+score_list = [0] * A
+if A > 0:
+    score_list[0] = S[0]
+if A > 1:
+    score_list[1] = S[1]
+
+for i in range(2, A):
+    score_list[i] = max(score_list[:i - 1]) + S[i]
+print(max(score_list))
